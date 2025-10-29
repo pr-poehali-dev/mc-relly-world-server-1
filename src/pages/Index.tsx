@@ -37,41 +37,9 @@ const Index = () => {
     setShowPaymentDialog(true);
   };
 
-  const payWithBank = (bank: 'sber' | 'tinkoff' | 'alpha' | 'sberkids' | 'other') => {
-    if (!selectedDonate) return;
-    
-    if (bank === 'other') {
-      setShowPaymentDialog(false);
-      setShowPaymentInfo(true);
-      return;
-    }
-    
-    const comment = `Донат ${selectedDonate.name} - McRellyWorld`;
-    const amount = selectedDonate.price;
-    let paymentUrl = '';
-    
-    switch(bank) {
-      case 'sber':
-        paymentUrl = `https://online.sberbank.ru/CSAFront/async/page/external/payment.do?sum=${amount}&toState=cardTransfer&cardNumber=${sberCard}&comment=${encodeURIComponent(comment)}`;
-        break;
-      case 'tinkoff':
-        paymentUrl = `https://www.tinkoff.ru/rm/transfer.form/?cardNumber=${sberCard}&amount=${amount}&comment=${encodeURIComponent(comment)}`;
-        break;
-      case 'alpha':
-        paymentUrl = `https://alfabank.ru/make-money-transfer/?cardNumber=${sberCard}&amount=${amount}&comment=${encodeURIComponent(comment)}`;
-        break;
-      case 'sberkids':
-        paymentUrl = `sberkids://p2p?cardNumber=${sberCard}&amount=${amount}&comment=${encodeURIComponent(comment)}`;
-        break;
-    }
-    
-    window.open(paymentUrl, '_blank');
+  const payWithBank = () => {
     setShowPaymentDialog(false);
-    
-    toast({
-      title: "Переход к оплате",
-      description: `Откройте приложение банка и завершите оплату ${amount}₽`,
-    });
+    setShowPaymentInfo(true);
   };
 
   const copyPaymentNumber = () => {
@@ -352,35 +320,35 @@ const Index = () => {
               Выберите банк для оплаты:
             </p>
             <Button 
-              onClick={() => payWithBank('sber')} 
+              onClick={payWithBank} 
               className="w-full h-14 text-base bg-primary hover:bg-primary/90"
             >
               <Icon name="CreditCard" size={22} className="mr-2" />
               СберБанк
             </Button>
             <Button 
-              onClick={() => payWithBank('tinkoff')} 
+              onClick={payWithBank} 
               className="w-full h-14 text-base bg-secondary hover:bg-secondary/90"
             >
               <Icon name="Wallet" size={22} className="mr-2" />
               Тинькофф
             </Button>
             <Button 
-              onClick={() => payWithBank('alpha')} 
+              onClick={payWithBank} 
               className="w-full h-14 text-base bg-accent hover:bg-accent/90"
             >
               <Icon name="Building" size={22} className="mr-2" />
               Альфа-Банк
             </Button>
             <Button 
-              onClick={() => payWithBank('sberkids')} 
+              onClick={payWithBank} 
               className="w-full h-14 text-base bg-primary/80 hover:bg-primary/70"
             >
               <Icon name="Sparkles" size={22} className="mr-2" />
               СберKids
             </Button>
             <Button 
-              onClick={() => payWithBank('other')} 
+              onClick={payWithBank} 
               className="w-full h-14 text-base bg-muted hover:bg-muted/90 text-foreground"
             >
               <Icon name="Smartphone" size={22} className="mr-2" />
