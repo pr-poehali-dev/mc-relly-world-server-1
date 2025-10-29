@@ -8,7 +8,9 @@ import { useToast } from "@/hooks/use-toast";
 const Index = () => {
   const { toast } = useToast();
   const serverIP = "McRellyWorld.aternos.me";
+  const sberPhone = "79930642778";
   const [copiedIP, setCopiedIP] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(serverIP);
@@ -18,6 +20,16 @@ const Index = () => {
       description: "Адрес сервера скопирован в буфер обмена",
     });
     setTimeout(() => setCopiedIP(false), 2000);
+  };
+
+  const copyPhone = () => {
+    navigator.clipboard.writeText(sberPhone);
+    setCopiedPhone(true);
+    toast({
+      title: "Номер скопирован!",
+      description: "Номер карты Сбер скопирован в буфер обмена",
+    });
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   return (
@@ -150,9 +162,19 @@ const Index = () => {
           <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
             Донат
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-4 max-w-2xl mx-auto">
             Поддержи сервер и получи уникальные привилегии!
           </p>
+          <div className="flex flex-col items-center gap-3 mb-12">
+            <div className="bg-card border border-border rounded-lg px-6 py-3 flex items-center gap-3">
+              <Icon name="CreditCard" className="text-secondary" size={24} />
+              <div className="flex flex-col">
+                <span className="text-xs text-muted-foreground">Сбербанк</span>
+                <code className="text-lg font-mono text-foreground">{sberPhone}</code>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">Нажми "Купить" чтобы скопировать номер карты</p>
+          </div>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <Card className="border-border bg-card hover:border-primary transition-all hover:scale-105">
@@ -181,8 +203,8 @@ const Index = () => {
                     3 дома
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground">
-                  Купить
+                <Button onClick={copyPhone} className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground">
+                  {copiedPhone ? "Скопировано!" : "Купить"}
                 </Button>
               </CardContent>
             </Card>
@@ -218,8 +240,8 @@ const Index = () => {
                     Команда /tpahere
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-                  Купить
+                <Button onClick={copyPhone} className="w-full mt-6 bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+                  {copiedPhone ? "Скопировано!" : "Купить"}
                 </Button>
               </CardContent>
             </Card>
@@ -254,8 +276,8 @@ const Index = () => {
                     Команды /tp, /near, /nick, /ec
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground">
-                  Купить
+                <Button onClick={copyPhone} className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground">
+                  {copiedPhone ? "Скопировано!" : "Купить"}
                 </Button>
               </CardContent>
             </Card>
