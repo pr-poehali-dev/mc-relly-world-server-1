@@ -15,7 +15,7 @@ import {
 const Index = () => {
   const { toast } = useToast();
   const serverIP = "McRellyWorld.aternos.me";
-  const sberPhone = "79930642778";
+  const sberCard = "2202208255397896";
   const [copiedIP, setCopiedIP] = useState(false);
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
   const [showPaymentInfo, setShowPaymentInfo] = useState(false);
@@ -386,9 +386,9 @@ const Index = () => {
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="bg-card/50 border-2 border-primary rounded-lg p-4 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Номер телефона:</span>
-                <code className="text-lg font-mono font-bold text-foreground">{sberPhone}</code>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm text-muted-foreground">Номер карты Сбер:</span>
+                <code className="text-lg font-mono font-bold text-foreground">{sberCard}</code>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Сумма:</span>
@@ -407,12 +407,12 @@ const Index = () => {
               {copiedNumber ? (
                 <>
                   <Icon name="Check" size={20} className="mr-2" />
-                  Номер скопирован!
+                  Номер карты скопирован!
                 </>
               ) : (
                 <>
                   <Icon name="Copy" size={20} className="mr-2" />
-                  Скопировать номер
+                  Скопировать номер карты
                 </>
               )}
             </Button>
@@ -422,10 +422,10 @@ const Index = () => {
                 <strong>Инструкция:</strong>
               </p>
               <ol className="text-xs text-muted-foreground mt-2 space-y-1 list-decimal list-inside">
-                <li>Скопируйте номер кнопкой выше</li>
+                <li>Скопируйте номер карты кнопкой выше</li>
                 <li>Откройте приложение вашего банка</li>
-                <li>Выберите "Перевод по номеру телефона"</li>
-                <li>Вставьте номер и отправьте {selectedDonate?.price}₽</li>
+                <li>Выберите "Перевод на карту"</li>
+                <li>Вставьте номер карты и отправьте {selectedDonate?.price}₽</li>
                 <li>В комментарии укажите: Донат {selectedDonate?.name} - McRellyWorld</li>
               </ol>
             </div>
