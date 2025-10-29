@@ -236,6 +236,10 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <Icon name="Check" className="text-accent" size={16} />
+                    +945.000 волюты
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-accent" size={16} />
                     10 домов
                   </li>
                   <li className="flex items-center gap-2">
@@ -244,7 +248,7 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <Icon name="Check" className="text-accent" size={16} />
-                    Уникальный префикс
+                    Команды /tp, /near, /nick, /ec
                   </li>
                 </ul>
                 <Button className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground">
