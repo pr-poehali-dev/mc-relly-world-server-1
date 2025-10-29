@@ -37,9 +37,41 @@ const Index = () => {
     setShowPaymentDialog(true);
   };
 
-  const payWithBank = () => {
+  const payWithBank = (bank: 'sber' | 'tinkoff' | 'alpha' | 'sberkids' | 'other') => {
+    if (!selectedDonate) return;
+    
+    if (bank === 'other') {
+      setShowPaymentDialog(false);
+      setShowPaymentInfo(true);
+      return;
+    }
+    
+    const comment = `Донат ${selectedDonate.name} - McRellyWorld`;
+    const amount = selectedDonate.price;
+    let paymentUrl = '';
+    
+    switch(bank) {
+      case 'sber':
+        paymentUrl = `https://online.sberbank.ru/CSAFront/async/page/external/payment.do?toState=pay&inn=&kpp=&bik=&recipient=&accountNumber=&recipientValue=&kbk=&oktmo=&paymentPurpose=${encodeURIComponent(comment)}&phone=${sberPhone}&purposeCode=&payerInn=&uin=&nds=&lastName=&firstName=&middleName=&documentNumber=&personalAcc=&drawer=&flat=&address=&period=&status=&sum=${amount}`;
+        break;
+      case 'tinkoff':
+        paymentUrl = `https://www.tinkoff.ru/rm/transfer.form/payment/?accountNumber=${sberPhone}&amount=${amount}&comment=${encodeURIComponent(comment)}`;
+        break;
+      case 'alpha':
+        paymentUrl = `https://alfabank.ru/make-money-transfer/?phone=${sberPhone}&amount=${amount}&comment=${encodeURIComponent(comment)}`;
+        break;
+      case 'sberkids':
+        paymentUrl = `https://online.sberbank.ru/CSAFront/async/page/external/payment.do?phone=${sberPhone}&sum=${amount}&paymentPurpose=${encodeURIComponent(comment)}`;
+        break;
+    }
+    
+    window.open(paymentUrl, '_blank');
     setShowPaymentDialog(false);
-    setShowPaymentInfo(true);
+    
+    toast({
+      title: "Переход к оплате",
+      description: `Откройте приложение банка и завершите оплату ${amount}₽`,
+    });
   };
 
   const copyPaymentNumber = () => {
@@ -320,35 +352,35 @@ const Index = () => {
               Выберите банк для оплаты:
             </p>
             <Button 
-              onClick={payWithBank} 
+              onClick={() => payWithBank('sber')} 
               className="w-full h-14 text-base bg-primary hover:bg-primary/90"
             >
               <Icon name="CreditCard" size={22} className="mr-2" />
               СберБанк
             </Button>
             <Button 
-              onClick={payWithBank} 
+              onClick={() => payWithBank('tinkoff')} 
               className="w-full h-14 text-base bg-secondary hover:bg-secondary/90"
             >
               <Icon name="Wallet" size={22} className="mr-2" />
               Тинькофф
             </Button>
             <Button 
-              onClick={payWithBank} 
+              onClick={() => payWithBank('alpha')} 
               className="w-full h-14 text-base bg-accent hover:bg-accent/90"
             >
               <Icon name="Building" size={22} className="mr-2" />
               Альфа-Банк
             </Button>
             <Button 
-              onClick={payWithBank} 
+              onClick={() => payWithBank('sberkids')} 
               className="w-full h-14 text-base bg-primary/80 hover:bg-primary/70"
             >
               <Icon name="Sparkles" size={22} className="mr-2" />
               СберKids
             </Button>
             <Button 
-              onClick={payWithBank} 
+              onClick={() => payWithBank('other')} 
               className="w-full h-14 text-base bg-muted hover:bg-muted/90 text-foreground"
             >
               <Icon name="Smartphone" size={22} className="mr-2" />
