@@ -163,11 +163,15 @@ const Index = () => {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <Icon name="Check" className="text-primary" size={16} />
-                    Цветной ник
+                    Fly на спавне
                   </li>
                   <li className="flex items-center gap-2">
                     <Icon name="Check" className="text-primary" size={16} />
-                    Доступ к /kit hero
+                    RTP
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-primary" size={16} />
+                    +100.000 волюты
                   </li>
                   <li className="flex items-center gap-2">
                     <Icon name="Check" className="text-primary" size={16} />
