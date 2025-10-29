@@ -210,6 +210,10 @@ const Index = () => {
                     <Icon name="Check" className="text-secondary" size={16} />
                     5 домов
                   </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-secondary" size={16} />
+                    Команда /tpahere
+                  </li>
                 </ul>
                 <Button className="w-full mt-6 bg-secondary hover:bg-secondary/90 text-secondary-foreground">
                   Купить
