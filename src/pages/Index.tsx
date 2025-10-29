@@ -18,7 +18,9 @@ const Index = () => {
   const sberPhone = "79930642778";
   const [copiedIP, setCopiedIP] = useState(false);
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
+  const [showPaymentInfo, setShowPaymentInfo] = useState(false);
   const [selectedDonate, setSelectedDonate] = useState<{name: string, price: number} | null>(null);
+  const [copiedNumber, setCopiedNumber] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(serverIP);
@@ -35,25 +37,19 @@ const Index = () => {
     setShowPaymentDialog(true);
   };
 
-  const payWithBank = (bank: 'sber' | 'tinkoff') => {
-    if (!selectedDonate) return;
-    
-    const comment = `Донат ${selectedDonate.name} - McRellyWorld`;
-    let paymentUrl = '';
-    
-    if (bank === 'sber') {
-      paymentUrl = `https://pay.sber-pay.net/transfer/${sberPhone}?amount=${selectedDonate.price}&comment=${encodeURIComponent(comment)}`;
-    } else if (bank === 'tinkoff') {
-      paymentUrl = `https://www.tinkoff.ru/rm/payment/?phone=${sberPhone}&amount=${selectedDonate.price}&comment=${encodeURIComponent(comment)}`;
-    }
-    
-    window.open(paymentUrl, '_blank');
+  const payWithBank = () => {
     setShowPaymentDialog(false);
-    
+    setShowPaymentInfo(true);
+  };
+
+  const copyPaymentNumber = () => {
+    navigator.clipboard.writeText(sberPhone);
+    setCopiedNumber(true);
     toast({
-      title: "Переход к оплате",
-      description: `Открыто приложение ${bank === 'sber' ? 'СберБанк' : 'Тинькофф'} для оплаты ${selectedDonate.price}₽`,
+      title: "Номер скопирован!",
+      description: "Номер карты скопирован в буфер обмена",
     });
+    setTimeout(() => setCopiedNumber(false), 2000);
   };
 
   return (
@@ -321,18 +317,11 @@ const Index = () => {
           </DialogHeader>
           <div className="flex flex-col gap-3 py-4">
             <Button 
-              onClick={() => payWithBank('sber')} 
+              onClick={payWithBank} 
               className="w-full h-16 text-lg bg-primary hover:bg-primary/90"
             >
               <Icon name="CreditCard" size={24} className="mr-3" />
-              СберБанк
-            </Button>
-            <Button 
-              onClick={() => payWithBank('tinkoff')} 
-              className="w-full h-16 text-lg bg-secondary hover:bg-secondary/90"
-            >
-              <Icon name="Wallet" size={24} className="mr-3" />
-              Тинькофф
+              Перевод по номеру телефона
             </Button>
           </div>
           <div className="bg-card/50 border border-border rounded-lg p-4 space-y-2">
@@ -348,6 +337,74 @@ const Index = () => {
             <p className="text-xs text-center text-accent font-medium mt-3">
               Если не выдали - напишите скриншот оплаты в Telegram: <a href="https://t.me/nyrislam222" target="_blank" rel="noopener noreferrer" className="underline hover:text-secondary">@nyrislam222</a>
             </p>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showPaymentInfo} onOpenChange={setShowPaymentInfo}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-center">Реквизиты для оплаты</DialogTitle>
+            <DialogDescription className="text-center">
+              {selectedDonate && (
+                <span className="text-lg font-bold text-foreground">
+                  {selectedDonate.name} - {selectedDonate.price}₽
+                </span>
+              )}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="bg-card/50 border-2 border-primary rounded-lg p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Номер телефона:</span>
+                <code className="text-lg font-mono font-bold text-foreground">{sberPhone}</code>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Сумма:</span>
+                <span className="text-lg font-bold text-secondary">{selectedDonate?.price}₽</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm text-muted-foreground">Комментарий:</span>
+                <span className="text-sm font-medium text-foreground">Донат {selectedDonate?.name} - McRellyWorld</span>
+              </div>
+            </div>
+
+            <Button 
+              onClick={copyPaymentNumber}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              {copiedNumber ? (
+                <>
+                  <Icon name="Check" size={20} className="mr-2" />
+                  Номер скопирован!
+                </>
+              ) : (
+                <>
+                  <Icon name="Copy" size={20} className="mr-2" />
+                  Скопировать номер
+                </>
+              )}
+            </Button>
+
+            <div className="bg-accent/10 border border-accent/30 rounded-lg p-3">
+              <p className="text-xs text-center text-foreground">
+                <strong>Инструкция:</strong>
+              </p>
+              <ol className="text-xs text-muted-foreground mt-2 space-y-1 list-decimal list-inside">
+                <li>Скопируйте номер кнопкой выше</li>
+                <li>Откройте приложение вашего банка</li>
+                <li>Выберите "Перевод по номеру телефона"</li>
+                <li>Вставьте номер и отправьте {selectedDonate?.price}₽</li>
+                <li>В комментарии укажите: Донат {selectedDonate?.name} - McRellyWorld</li>
+              </ol>
+            </div>
+
+            <div className="bg-card/50 border border-border rounded-lg p-3">
+              <p className="text-xs text-center text-muted-foreground">
+                После оплаты зайдите на сервер и напишите свой ник в чат.
+                Если не выдали - пишите в Telegram: <a href="https://t.me/nyrislam222" target="_blank" rel="noopener noreferrer" className="text-accent underline hover:text-secondary">@nyrislam222</a>
+              </p>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
