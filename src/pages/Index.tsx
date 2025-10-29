@@ -142,6 +142,116 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="donate" className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
+            Донат
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Поддержи сервер и получи уникальные привилегии!
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <Card className="border-border bg-card hover:border-primary transition-all hover:scale-105">
+              <CardHeader>
+                <Icon name="Shield" className="text-primary mb-2" size={32} />
+                <CardTitle className="text-foreground">HERO</CardTitle>
+                <CardDescription className="text-muted-foreground">Стань героем сервера</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-foreground mb-4">45₽</div>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-primary" size={16} />
+                    Цветной ник
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-primary" size={16} />
+                    Доступ к /kit hero
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-primary" size={16} />
+                    3 дома
+                  </li>
+                </ul>
+                <Button className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground">
+                  Купить
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-secondary bg-card relative hover:scale-105 transition-all">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <Badge className="bg-secondary text-secondary-foreground px-4 py-1">
+                  Популярный
+                </Badge>
+              </div>
+              <CardHeader>
+                <Icon name="Zap" className="text-secondary mb-2" size={32} />
+                <CardTitle className="text-foreground">TITAN</CardTitle>
+                <CardDescription className="text-muted-foreground">Сила титана</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-foreground mb-4">89₽</div>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-secondary" size={16} />
+                    Всё из HERO
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-secondary" size={16} />
+                    5 домов
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-secondary" size={16} />
+                    Флай на спавне
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-secondary" size={16} />
+                    Приват 70х70
+                  </li>
+                </ul>
+                <Button className="w-full mt-6 bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+                  Купить
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border bg-card hover:border-accent transition-all hover:scale-105">
+              <CardHeader>
+                <Icon name="Crown" className="text-accent mb-2" size={32} />
+                <CardTitle className="text-foreground">IMPERATOR</CardTitle>
+                <CardDescription className="text-muted-foreground">Власть императора</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-foreground mb-4">235₽</div>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-accent" size={16} />
+                    Всё из TITAN
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-accent" size={16} />
+                    10 домов
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-accent" size={16} />
+                    Флай везде
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" className="text-accent" size={16} />
+                    Уникальный префикс
+                  </li>
+                </ul>
+                <Button className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground">
+                  Купить
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <footer className="py-8 bg-card border-t border-border">
         <div className="container mx-auto px-4 text-center">
           <p className="text-muted-foreground">
