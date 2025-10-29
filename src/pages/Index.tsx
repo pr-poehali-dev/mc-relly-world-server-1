@@ -346,7 +346,7 @@ const Index = () => {
               <li>Администратор McMrDomer выдаст привилегии в течение 5-15 минут</li>
             </ol>
             <p className="text-xs text-center text-accent font-medium mt-3">
-              Если не выдали - напишите скриншот оплаты в чат!
+              Если не выдали - напишите скриншот оплаты в Telegram: <a href="https://t.me/nyrislam222" target="_blank" rel="noopener noreferrer" className="underline hover:text-secondary">@nyrislam222</a>
             </p>
           </div>
         </DialogContent>
