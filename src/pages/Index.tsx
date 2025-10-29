@@ -335,9 +335,20 @@ const Index = () => {
               Тинькофф
             </Button>
           </div>
-          <p className="text-xs text-center text-muted-foreground">
-            После оплаты напишите свой ник в Minecraft администратору
-          </p>
+          <div className="bg-card/50 border border-border rounded-lg p-4 space-y-2">
+            <p className="text-sm font-semibold text-foreground text-center mb-2">
+              📋 Инструкция после оплаты:
+            </p>
+            <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside">
+              <li>Оплатите донат через выбранный банк</li>
+              <li>Зайдите на сервер McRellyWorld.aternos.me</li>
+              <li>Напишите в чат свой игровой ник и название доната</li>
+              <li>Администратор McMrDomer выдаст привилегии в течение 5-15 минут</li>
+            </ol>
+            <p className="text-xs text-center text-accent font-medium mt-3">
+              Если не выдали - напишите скриншот оплаты в чат!
+            </p>
+          </div>
         </DialogContent>
       </Dialog>
     </div>
