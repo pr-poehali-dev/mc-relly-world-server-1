@@ -69,9 +69,12 @@ const Index = () => {
 
       <section id="about" className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-foreground">
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
             О сервере
           </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Сервер работает на версии <span className="text-secondary font-bold">Minecraft 1.16.5</span>
+          </p>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <Card className="border-border bg-card hover:border-primary transition-all hover:scale-105">
