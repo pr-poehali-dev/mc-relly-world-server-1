@@ -387,6 +387,10 @@ const Index = () => {
           <div className="space-y-4 py-4">
             <div className="bg-card/50 border-2 border-primary rounded-lg p-4 space-y-3">
               <div className="flex flex-col gap-1">
+                <span className="text-sm text-muted-foreground">Получатель:</span>
+                <span className="text-base font-semibold text-foreground">McRellyWorld</span>
+              </div>
+              <div className="flex flex-col gap-1">
                 <span className="text-sm text-muted-foreground">Номер карты Сбер:</span>
                 <code className="text-lg font-mono font-bold text-foreground">{sberCard}</code>
               </div>
