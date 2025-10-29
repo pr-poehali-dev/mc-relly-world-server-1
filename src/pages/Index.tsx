@@ -316,12 +316,43 @@ const Index = () => {
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col gap-3 py-4">
+            <p className="text-sm text-center text-muted-foreground mb-2">
+              Выберите банк для оплаты:
+            </p>
             <Button 
               onClick={payWithBank} 
-              className="w-full h-16 text-lg bg-primary hover:bg-primary/90"
+              className="w-full h-14 text-base bg-primary hover:bg-primary/90"
             >
-              <Icon name="CreditCard" size={24} className="mr-3" />
-              Перевод по номеру телефона
+              <Icon name="CreditCard" size={22} className="mr-2" />
+              СберБанк
+            </Button>
+            <Button 
+              onClick={payWithBank} 
+              className="w-full h-14 text-base bg-secondary hover:bg-secondary/90"
+            >
+              <Icon name="Wallet" size={22} className="mr-2" />
+              Тинькофф
+            </Button>
+            <Button 
+              onClick={payWithBank} 
+              className="w-full h-14 text-base bg-accent hover:bg-accent/90"
+            >
+              <Icon name="Building" size={22} className="mr-2" />
+              Альфа-Банк
+            </Button>
+            <Button 
+              onClick={payWithBank} 
+              className="w-full h-14 text-base bg-primary/80 hover:bg-primary/70"
+            >
+              <Icon name="Sparkles" size={22} className="mr-2" />
+              СберKids
+            </Button>
+            <Button 
+              onClick={payWithBank} 
+              className="w-full h-14 text-base bg-muted hover:bg-muted/90 text-foreground"
+            >
+              <Icon name="Smartphone" size={22} className="mr-2" />
+              Другой банк
             </Button>
           </div>
           <div className="bg-card/50 border border-border rounded-lg p-4 space-y-2">
