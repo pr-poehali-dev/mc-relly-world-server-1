@@ -247,7 +247,7 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <Icon name="Check" className="text-secondary" size={16} />
-                    Команда /tpahere
+                    Команды /tpahere, /feed
                   </li>
                 </ul>
                 <Button onClick={() => openPaymentDialog('TITAN', 89)} className="w-full mt-6 bg-secondary hover:bg-secondary/90 text-secondary-foreground">
